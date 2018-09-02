@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html >
+  <head>
+	<meta charset="UTF-8">
+    <title>Quiz Teste Prático</title>
+  <script type="text/javascript" language="javascript">
+    var inicio=confirm('Bem vindo ao teste de conhecimento de HTML(clique OK para continuar)');
+    if(inicio==false){document.write(sair);}
+    else{ window.alert('Pronto? Vamos começar. Lembrando: responda apenas alternativa a, b ou c.');
+    //Inicio do quiz
+    var certo = "<b>Correto!</b>"; var errado = "<b style='color:red;'>Errado!</b>";var o = new Array();
+    var acertos=0; var erros=0; var respostas = new Array(); var p = new Array();var r = new Array();
+    var t=3; //COLOQUE AQUI TOTAL DE PERGUNTAS DO QUIZ !!!!
+    // LISTA DE PERGUNTAS
+    p[1] = "O que significa a sigla HTML? a)Hyperlink And Text Markup Language b)Hyper Text Markup Language c)Home Tools Markup Language ";
+    r[1] = 'b';
+    p[2] = "O que significa a sigla CSS? a)Creative Style Sheets b)Cascading Style Sheets c)Colorful Style Sheets ";
+    r[2] = 'b';
+    p[3] = "Dentro de qual elemento HTML nós colocamos o JavaScript? a)script b)js c)javascript";
+    r[3] = 'a';
+    //ADICIONE MAIS PERGUNTAS AQUI COPIANDO 2 EM 2 LINHAS: P[] = PERGUNTA R[] = RESPOSTA
+     for(var i=1;i<=t;i++){o[i] = i;} //gera uma sequencia de t numeros
+     for(var i=1;i<=10;i++)          //embaralha a sequencia 10 vezes
+     {
+      n=Math.round(t*(Math.random())); 
+      m=Math.round(t*(Math.random()));
+      if(m==0){m++;}
+      if(n==0){n++;}
+      var temp = o[n];
+      o[n]=o[m];
+      o[m]=temp;
+     } 
+    for(var i=1;i<=t;i++)
+    {
+      respostas[o[i]] = prompt(p[o[i]],"");
+       if(respostas[o[i]]==r[o[i]]){respostas[o[i]]=certo;acertos++;}else{respostas[o[i]]=errado;erros++;}
+     }
+    //fim do quiz
+    document.write("Javascript Quiz:<br><br>Suas respostas:<br><br>");
+    document.write("<ol>");
+    for(var i=1;i<=t;i++)
+    {
+    document.write("<li>"+respostas[o[i]]);}
+    document.write("</ol>");
+    document.write("<br>Total de acertos: "+acertos);
+    document.write("<br>Total de erros: "+erros);
+    document.write("<br><br><input type=button value='Respostas' Onclick=javascript:if(document.getElementById('rp').style.display=='none'){document.getElementById('rp').style.display='block';}else{document.getElementById('rp').style.display='none';}>");
+    document.write("<br><div id='rp' class='rp' style='display:none;'><ol>");
+    for(var i=1;i<=t;i++)
+     { document.write("<li>"+p[o[i]]+"<br>R:"+r[o[i]]);}
+    document.write("</ol></div>");
+   }
+  </script>
+ </head>
+ <body></body>
+</html>
